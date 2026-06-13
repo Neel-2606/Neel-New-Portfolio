@@ -10,6 +10,10 @@ if (typeof globalThis.addEventListener === "function") {
     (event) => record(event.reason)
   );
 }
+if (typeof process !== "undefined" && typeof process.on === "function") {
+  process.on("uncaughtException", (error) => record(error));
+  process.on("unhandledRejection", (reason) => record(reason));
+}
 function consumeLastCapturedError() {
   if (!lastCapturedError) return void 0;
   if (Date.now() - lastCapturedError.at > TTL_MS) {
