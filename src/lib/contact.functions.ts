@@ -11,15 +11,7 @@ const schema = z.object({
 export const submitContact = createServerFn({ method: "POST" })
   .validator((d: unknown) => schema.parse(d))
   .handler(async ({ data }) => {
-    const { supabase } = await import("@/integrations/supabase/client");
-
-    const { error } = await supabase.from("contacts" as never).insert(data as never);
-    if (error) {
-      console.error("contact insert failed", error);
-      throw new Error("Could not save your message. Please try again.");
-    }
-
-    // Email notification via Resend
+    // 1. Email notification via Resend (Primary delivery method)
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
     if (RESEND_API_KEY) {
       try {
@@ -33,14 +25,13 @@ export const submitContact = createServerFn({ method: "POST" })
             <p style="white-space:pre-wrap;line-height:1.6">${escapeHtml(data.message)}</p>
           </div>`;
         
-        await fetch("https://api.resend.com/emails", {
+        const res = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${RESEND_API_KEY}`,
           },
           body: JSON.stringify({
-            // Using onboarding domain allows you to send to your verified Resend email address
             from: "Portfolio Contact <onboarding@resend.dev>",
             to: ["neelprajapati2601@gmail.com"],
             subject: `New Message from ${data.name}: ${data.subject}`,
@@ -48,9 +39,24 @@ export const submitContact = createServerFn({ method: "POST" })
             reply_to: data.email,
           }),
         });
+        
+        if (!res.ok) {
+           console.error("Resend API Error:", await res.text());
+        }
       } catch (e) {
         console.warn("Resend email failed to send (non-fatal)", e);
       }
+    }
+
+    // 2. Backup to Supabase (Non-blocking)
+    try {
+      const { supabase } = await import("@/integrations/supabase/client");
+      const { error } = await supabase.from("contacts" as never).insert(data as never);
+      if (error) {
+        console.error("Supabase insert failed (Check RLS policies or if table exists):", error);
+      }
+    } catch (e) {
+      console.error("Supabase initialization failed:", e);
     }
 
     return { ok: true };
