@@ -19,10 +19,9 @@ export const submitContact = createServerFn({ method: "POST" })
       throw new Error("Could not save your message. Please try again.");
     }
 
-    // Optional email notification via Resend connector (if configured)
-    const LOVABLE_API_KEY = process.env.LOVABLE_API_KEY;
+    // Email notification via Resend
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
-    if (LOVABLE_API_KEY && RESEND_API_KEY) {
+    if (RESEND_API_KEY) {
       try {
         const html = `
           <div style="font-family:Inter,sans-serif;background:#0a0a0f;color:#f1f5f9;padding:24px;border-radius:12px;">
@@ -33,23 +32,24 @@ export const submitContact = createServerFn({ method: "POST" })
             <hr style="border:none;border-top:1px solid #334155;margin:16px 0"/>
             <p style="white-space:pre-wrap;line-height:1.6">${escapeHtml(data.message)}</p>
           </div>`;
-        await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+        
+        await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${LOVABLE_API_KEY}`,
-            "X-Connection-Api-Key": RESEND_API_KEY,
+            Authorization: `Bearer ${RESEND_API_KEY}`,
           },
           body: JSON.stringify({
-            from: "Portfolio <onboarding@resend.dev>",
+            // Using onboarding domain allows you to send to your verified Resend email address
+            from: "Portfolio Contact <onboarding@resend.dev>",
             to: ["neelprajapati2601@gmail.com"],
-            subject: `New Portfolio Contact: ${data.subject}`,
+            subject: `New Message from ${data.name}: ${data.subject}`,
             html,
             reply_to: data.email,
           }),
         });
       } catch (e) {
-        console.warn("resend send failed (non-fatal)", e);
+        console.warn("Resend email failed to send (non-fatal)", e);
       }
     }
 
