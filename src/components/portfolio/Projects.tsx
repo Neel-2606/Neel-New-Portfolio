@@ -183,10 +183,10 @@ export default function Projects() {
           {filteredProjects.map((p, i) => (
             <TiltWrapper key={p.title} className="h-full">
               <motion.article
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: (i % 4) * 0.06 }}
+                initial={{ opacity: 0, y: 40, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.7, delay: (i % 2) * 0.15, ease: "easeOut" }}
                 className="card-inner-glow relative glass rounded-2xl p-7 overflow-hidden flex flex-col h-full"
                 style={{
                   borderLeft: `4px solid ${BORDER_COLOR[p.color]}`,

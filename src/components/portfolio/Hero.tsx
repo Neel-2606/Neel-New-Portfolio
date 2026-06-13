@@ -21,20 +21,20 @@ function ScrambleText({ text }: { text: string }) {
     const maxIterations = 10;
     
     const interval = setInterval(() => {
-      setDisplayText((prev) => 
-        text.split("").map((letter, index) => {
-          if (index < iteration) {
-            return text[index];
-          }
-          return CHARS[Math.floor(Math.random() * CHARS.length)];
-        }).join("")
-      );
-
       if (iteration >= text.length) {
         clearInterval(interval);
+        setDisplayText(text);
+      } else {
+        setDisplayText((prev) => 
+          text.split("").map((letter, index) => {
+            if (index < iteration) {
+              return text[index];
+            }
+            return CHARS[Math.floor(Math.random() * CHARS.length)];
+          }).join("")
+        );
+        iteration += 1 / 3;
       }
-      
-      iteration += 1 / 2;
     }, 30);
 
     return () => clearInterval(interval);
@@ -101,7 +101,8 @@ export default function Hero() {
               ref={videoRef}
               playsInline
               preload="metadata"
-              className="hero-video w-full h-full object-cover"
+              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%230a0a1a'/%3E%3C/svg%3E"
+              className="hero-video w-full h-full object-cover bg-[#0a0a1a]"
             >
               <source src={HERO_VIDEO_URL + "#t=0.1"} type="video/mp4" />
             </video>

@@ -1,18 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
+import { Suspense, lazy } from "react";
 import Nav from "@/components/portfolio/Nav";
 import Hero from "@/components/portfolio/Hero";
-import About from "@/components/portfolio/About";
-import Skills from "@/components/portfolio/Skills";
-import Projects from "@/components/portfolio/Projects";
-
-import Hackathons from "@/components/portfolio/Hackathons";
-import Certifications from "@/components/portfolio/Certifications";
-import Leadership from "@/components/portfolio/Leadership";
-import Contact from "@/components/portfolio/Contact";
-import Footer from "@/components/portfolio/Footer";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import BackToTop from "@/components/portfolio/BackToTop";
+
+// Lazy load below-the-fold components
+const About = lazy(() => import("@/components/portfolio/About"));
+const Skills = lazy(() => import("@/components/portfolio/Skills"));
+const Projects = lazy(() => import("@/components/portfolio/Projects"));
+const Hackathons = lazy(() => import("@/components/portfolio/Hackathons"));
+const Certifications = lazy(() => import("@/components/portfolio/Certifications"));
+const Leadership = lazy(() => import("@/components/portfolio/Leadership"));
+const Contact = lazy(() => import("@/components/portfolio/Contact"));
+const Footer = lazy(() => import("@/components/portfolio/Footer"));
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,6 +35,11 @@ export const Route = createFileRoute("/")({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
       },
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/favicon.svg",
+      },
     ],
   }),
   component: Index,
@@ -44,15 +51,17 @@ function Index() {
       <ScrollProgress />
       <Nav />
       <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Hackathons />
-      <Certifications />
-      <Leadership />
-      <Contact />
-      <Footer />
-      <BackToTop />
+      <Suspense fallback={<div className="h-20" />}>
+        <About />
+        <Skills />
+        <Projects />
+        <Hackathons />
+        <Certifications />
+        <Leadership />
+        <Contact />
+        <Footer />
+        <BackToTop />
+      </Suspense>
       <Toaster richColors theme="dark" position="bottom-right" />
     </main>
   );
