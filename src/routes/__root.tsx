@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "Neel Prajapati — AI/ML Engineer & Hackathon Builder" },
       { property: "og:description", content: "Building AI that creates real-world impact. Winner — NASA Space Apps. SSIP funded. From Vadodara, India." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "/og-image.png" },
+      { property: "og:image", content: "https://neelportfolio-teal.vercel.app/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
