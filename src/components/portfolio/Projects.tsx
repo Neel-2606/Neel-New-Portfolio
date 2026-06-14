@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github, ExternalLink } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 import Modal from "./Modal";
 import TiltWrapper from "./TiltWrapper";
@@ -17,6 +17,8 @@ type Project = {
   badge?: string;
   category: string[];
   id: string;
+  github?: string;
+  demo?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -30,6 +32,7 @@ const PROJECTS: Project[] = [
     color: "green",
     category: ["AI/ML"],
     id: "agriforge",
+    github: "https://github.com/Neel-2606",
     detail:
       "AgriForge — KrishiMitra is my most impactful project to date. It is an AI-powered agricultural platform designed to provide round-the-clock intelligent support to Indian farmers in 10+ regional languages through both voice and text interfaces. The platform integrates EfficientNet for real-time crop disease detection from images taken by farmers on their phones. The multilingual voice AI feature ensures accessibility for rural users who may not be literate or comfortable with text-based interfaces. AgriForge was awarded Rs. 2.43 Lakh in research funding under the SSIP — Student Startup and Innovation Policy by the Government of Gujarat, validating its real-world potential and social impact. This project is currently in its pilot stage and actively being developed.",
   },
@@ -42,6 +45,7 @@ const PROJECTS: Project[] = [
     color: "blue",
     category: ["AI/ML", "Hackathon"],
     id: "urban-intel",
+    github: "https://github.com/Neel-2606/Urban-Intel-Ai",
     detail:
       "Urban Intel AI is a Smart City Governance Platform I built for the Ingenius Hackathon 7.0 at Ahmedabad University, where it won 1st Runner Up among 180+ teams. The system uses a Hybrid AI Architecture consisting of 6 specialized Random Forest models trained to predict critical urban risks including water scarcity, traffic congestion, and health hazards with high precision. What makes Urban Intel AI unique is the integration of a private local TinyLlama LLM that processes the risk outputs and generates real-time, actionable policy recommendations for city administrators — all while maintaining 100% data sovereignty without relying on any external APIs. This ensures both speed and privacy for sensitive government data.",
   },
@@ -54,6 +58,7 @@ const PROJECTS: Project[] = [
     color: "blue",
     category: ["Web", "Hackathon"],
     id: "mumbai-pulse",
+    github: "https://github.com/Neel-2606",
     detail:
       "Mumbai Pulse is an environmental intelligence platform built for the NASA Space Apps Challenge 2025, which my team won at the Vallabh Vidyanagar Local Event. The platform integrates NASA Earth Observation data including MODIS, Landsat, and SMAP datasets with real-time weather data from the Meteomatics API to monitor three critical environmental challenges across Mumbai: Urban Heat Islands — mapping temperature variations and identifying heat-stressed zones with cooling intervention suggestions; Water Resources — tracking lakes, reservoirs and rainfall while assessing water quality; and Air Quality — providing real-time AQI data, pollution source analytics and health advisories. All data is brought together in a unified interactive dashboard built with React/Next.js frontend, Flask API backend, and Leaflet + Esri/ArcGIS mapping layers.",
   },
@@ -66,6 +71,7 @@ const PROJECTS: Project[] = [
     color: "green",
     category: ["AI/ML", "Hackathon"],
     id: "terraforge",
+    github: "https://github.com/Neel-2606",
     detail:
       "TerraForge — Environmental Intelligence OS was built for DotSlash 9.0 at SVNIT Surat, a 30-hour national hackathon with 550+ competing teams, where it reached the Top 8 Finals. TerraForge is an AI-powered platform designed to help both governments and farmers make proactive, data-driven decisions using real-time environmental intelligence. Key features include AI models running locally for low cost, privacy preservation and offline capability in rural areas; prediction of environmental risks and agricultural impact using live data streams; multilingual voice assistance for rural users in regional Indian languages; and data-driven policy recommendation generation for government bodies.",
   },
@@ -78,6 +84,7 @@ const PROJECTS: Project[] = [
     color: "green",
     category: ["AI/ML", "Web", "Hackathon"],
     id: "smart-cattle",
+    github: "https://github.com/Neel-2606",
     detail:
       "Built for Hackovate 2025 at LJ University, this platform reached the Top 40 Finals among 240+ teams. The system features two specialized AI models: a Linear Regression model for milk yield prediction with 90% accuracy, and a Classification model for disease detection across 15+ conditions with 85% accuracy. Key platform features include real-time health monitoring and scoring, visual insight dashboards, automated PDF farm reports, multi-language support in English, Hindi, Gujarati and Marathi, batch processing capability for large herds, and a mobile-first design. My role: AI/ML Engineer responsible for model training and optimization.",
   },
@@ -90,6 +97,7 @@ const PROJECTS: Project[] = [
     color: "blue",
     category: ["Web", "Hackathon"],
     id: "coastal-threat",
+    github: "https://github.com/Neel-2606",
     detail:
       "Built for HackOut 2025 at DAIICT Gandhinagar — a hackathon with 4000+ registrations where only 250-300 teams were shortlisted for the offline round. The theme was Blue Carbon and Green Hydrogen. The Coastal Threat Alert System features role-based sign-in with 5 specialized dashboards for Disaster Management teams, City Governments, NGOs, Fisherfolk communities, and Civil Defence Teams. The platform provides real-time detection of sea-level rise, cyclones, algal blooms and illegal dumping activities, raising awareness on Blue Carbon ecosystems and disseminating real-time alerts to protect mangroves, wetlands and seagrass while ensuring community resilience.",
   },
@@ -102,6 +110,8 @@ const PROJECTS: Project[] = [
     color: "purple",
     category: ["AI/ML", "Web"],
     id: "mindforge",
+    github: "https://github.com/Neel-2606/MindForge",
+    demo: "https://mind-forge-six.vercel.app",
     detail:
       "MindForge is my personal passion project — a universal AI development engine that lets anyone generate websites, mobile apps, games, AI tools, automation bots and more from simple natural language prompts. The vision is to make development radically faster, more accessible and smarter using generative AI. Currently integrated with Mistral API for fast code generation, Hugging Face models for logic-based tools, and Gemini API for context-aware creative prompt understanding. Outputs include clean responsive code, beautiful UI previews and exportable/downloadable project structures. Upcoming features: real-time live preview rendering, project history and saving, one-click deployment with shareable links, and team collaboration features.",
   },
@@ -114,6 +124,7 @@ const PROJECTS: Project[] = [
     color: "orange",
     category: ["Web"],
     id: "eunoia",
+    github: "https://github.com/Neel-2606",
     detail:
       "Eunoia Homoeopathy is a real client project where I designed and deployed a fully live website for a homoeopathy clinic. This project gave me hands-on experience working with actual client requirements, making UI/UX decisions based on client feedback, handling domain setup and DNS configuration, and managing web hosting and deployment end-to-end. Beyond just writing code, this project taught me the full lifecycle of delivering a professional web product to a real paying client.",
   },
@@ -126,6 +137,7 @@ const PROJECTS: Project[] = [
     color: "purple",
     category: ["AI/ML", "Hackathon"],
     id: "agent-arena",
+    github: "https://github.com/Neel-2606",
     detail:
       "Agent Arena is an AI-powered Competitive Intelligence Agent built at HackBaroda 2026 under Devnovate. The platform monitors competitor activity across GitHub Releases, Reddit, Hacker News and product announcements, tracking community sentiment and generating strategic insights continuously. The core architectural innovation was moving beyond traditional RAG — where vector search would sometimes surface 2023 release notes when asked about recent activity, and similar announcements from different competitors would get mixed due to shared terminology. Instead, we redesigned the system around persistent agent memory using Vectorize AI, where every significant event is stored with timestamps, source attribution, threat scores, historical context and competitor-specific namespaces. The agent doesn't just retrieve information — it remembers it, identifies patterns over time, detects emerging threats and surfaces opportunities that standard retrieval systems miss entirely.",
   },
@@ -302,6 +314,44 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
+
+              {/* Action Buttons */}
+              {(active.github || active.demo) && (
+                <div className="flex flex-wrap gap-3 mt-8 justify-center">
+                  {active.github && (
+                    <a
+                      href={active.github}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm backdrop-blur-md transition-all hover:scale-105"
+                      style={{
+                        backgroundColor: `${BORDER_COLOR[active.color]}25`,
+                        border: `1px solid ${BORDER_COLOR[active.color]}60`,
+                        color: "#fff",
+                        boxShadow: `0 0 20px ${BORDER_COLOR[active.color]}30`,
+                      }}
+                    >
+                      <Github size={16} /> View on GitHub
+                    </a>
+                  )}
+                  {active.demo && (
+                    <a
+                      href={active.demo}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm backdrop-blur-md transition-all hover:scale-105"
+                      style={{
+                        backgroundColor: `${BORDER_COLOR[active.color]}25`,
+                        border: `1px solid ${BORDER_COLOR[active.color]}60`,
+                        color: "#fff",
+                        boxShadow: `0 0 20px ${BORDER_COLOR[active.color]}30`,
+                      }}
+                    >
+                      <ExternalLink size={16} /> Live Demo
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         )}

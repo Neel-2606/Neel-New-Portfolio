@@ -80,14 +80,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Neel Prajapati — AI/ML Engineer · Hackathon Builder · SSIP Innovator" },
+      { name: "description", content: "Portfolio of Neel Prajapati — CSE student at MSU Baroda, NASA Space Apps winner, Rs. 2.43L SSIP-funded AI builder." },
+      { name: "author", content: "Neel Prajapati" },
+      { property: "og:title", content: "Neel Prajapati — AI/ML Engineer & Hackathon Builder" },
+      { property: "og:description", content: "Building AI that creates real-world impact. Winner — NASA Space Apps. SSIP funded. From Vadodara, India." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:image", content: "/og-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {

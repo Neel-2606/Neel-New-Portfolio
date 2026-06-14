@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Sparkles, Play, Pause } from "lucide-react";
+import { ArrowRight, Mail, Sparkles, Play, Pause, FileDown, Hammer } from "lucide-react";
 
 const HERO_VIDEO_URL = "https://pqhnvajcqwgdoumsthdz.supabase.co/storage/v1/object/public/Portfolio-Assets/webvideo.mp4";
 
@@ -14,28 +14,28 @@ const ROLES = [
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
 
 function ScrambleText({ text }: { text: string }) {
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(text);
 
   useEffect(() => {
-    let iteration = 0;
-    const maxIterations = 10;
+    let frame = 0;
+    // Each character resolves after (index * 3) frames
+    const totalFrames = text.length * 3;
     
     const interval = setInterval(() => {
-      if (iteration >= text.length) {
+      frame++;
+      if (frame >= totalFrames) {
         clearInterval(interval);
         setDisplayText(text);
-      } else {
-        setDisplayText((prev) => 
-          text.split("").map((letter, index) => {
-            if (index < iteration) {
-              return text[index];
-            }
-            return CHARS[Math.floor(Math.random() * CHARS.length)];
-          }).join("")
-        );
-        iteration += 1 / 3;
+        return;
       }
-    }, 30);
+      const resolved = Math.floor(frame / 3);
+      setDisplayText(
+        text.split("").map((ch, idx) => {
+          if (idx < resolved) return text[idx];
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
+        }).join("")
+      );
+    }, 25);
 
     return () => clearInterval(interval);
   }, [text]);
@@ -209,6 +209,14 @@ export default function Hero() {
             <button onClick={() => go("contact")} className="btn-ghost-neon">
               <Mail size={18} /> Contact Me
             </button>
+            <a
+              href="/RESUME.pdf"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="btn-ghost-neon"
+            >
+              <FileDown size={18} /> Resume
+            </a>
           </motion.div>
 
           {/* Video controls — small glass pill buttons */}
@@ -225,6 +233,12 @@ export default function Hero() {
               {playing ? <Pause size={14} /> : <Play size={14} />}
               {playing ? "Pause" : (hasStarted ? "Resume" : "Play Intro")}
             </button>
+
+            {/* Currently Building pill */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold glass border border-emerald-400/30 text-emerald-300/90">
+              <Hammer size={14} className="animate-bounce" style={{ animationDuration: '2s' }} />
+              Currently building: AgriForge KrishiMitra AI
+            </div>
           </motion.div>
 
           <motion.div

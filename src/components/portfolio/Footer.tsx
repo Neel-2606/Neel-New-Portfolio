@@ -1,13 +1,35 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Eye } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
+import { useEffect, useState } from "react";
+import { getAndIncrementViews } from "@/lib/visitor.functions";
 
 export default function Footer() {
+  const fetchViews = useServerFn(getAndIncrementViews);
+  const [views, setViews] = useState<number | null>(null);
+
+  useEffect(() => {
+    fetchViews({ data: undefined })
+      .then((res: any) => {
+        if (res?.count) setViews(res.count);
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <footer className="relative mt-12 border-t border-white/10">
       <div className="h-px w-full bg-gradient-to-r from-transparent via-fuchsia-400/60 to-transparent" />
       <div className="max-w-7xl mx-auto px-5 sm:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <p className="text-sm text-white/55 font-mono text-center md:text-left">
-          Built by <span className="text-gradient font-semibold">Neel Prajapati</span> · MSU Baroda · 2025
-        </p>
+        <div className="flex flex-col items-center md:items-start gap-2">
+          <p className="text-sm text-white/55 font-mono text-center md:text-left">
+            Built by <span className="text-gradient font-semibold">Neel Prajapati</span> · MSU Baroda · 2025
+          </p>
+          {views !== null && views > 0 && (
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass border border-white/10 text-xs font-mono text-white/50">
+              <Eye size={13} className="text-indigo-400" />
+              <span className="text-gradient font-semibold">{views.toLocaleString()}</span> visitors
+            </div>
+          )}
+        </div>
         <div className="flex items-center gap-3">
           <a href="https://github.com/Neel-2606" target="_blank" rel="noreferrer"
              aria-label="GitHub"
