@@ -74,13 +74,20 @@ export default function Hero() {
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
-    if (v.paused || v.ended) {
-      if (v.ended) v.currentTime = 0;
+    if (v.muted) {
+      // Currently autoplaying muted — unmute to let user hear audio
       v.muted = false;
       v.volume = 1;
+      if (v.paused || v.ended) {
+        if (v.ended) v.currentTime = 0;
+        v.play().catch(() => {});
+      }
+    } else if (v.paused || v.ended) {
+      if (v.ended) v.currentTime = 0;
       v.play().catch(() => {});
     } else {
       v.pause();
+      v.muted = true;
     }
   };
 
@@ -101,9 +108,11 @@ export default function Hero() {
             <video
               ref={videoRef}
               playsInline
-              preload="metadata"
+              autoPlay
+              muted
+              loop
+              preload="auto"
               onError={() => setVideoFailed(true)}
-              poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%230a0a1a'/%3E%3C/svg%3E"
               className="hero-video w-full h-full object-cover bg-[#0a0a1a]"
             >
               <source src={HERO_VIDEO_URL} type="video/mp4" />
