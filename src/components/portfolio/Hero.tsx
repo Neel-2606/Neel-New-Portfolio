@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Sparkles, Play, Pause, FileDown, Hammer } from "lucide-react";
 
-const HERO_VIDEO_URL = "https://pqhnvajcqwgdoumsthdz.supabase.co/storage/v1/object/public/Portfolio-Assets/webvideo.mp4";
+const HERO_VIDEO_URL = "/Neel_Intro.mp4";
 
 const ROLES = [
   "AI & ML Engineer",
@@ -47,6 +47,7 @@ export default function Hero() {
   const [i, setI] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
+  const [videoFailed, setVideoFailed] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
@@ -95,16 +96,17 @@ export default function Hero() {
       <div className="hero-mobile-overlay pointer-events-none" aria-hidden />
       {/* Video — masked, no container chrome, blends into bg */}
       <div className="hero-media absolute inset-0 md:left-1/2 bg-transparent overflow-hidden pointer-events-none">
-        {HERO_VIDEO_URL ? (
+        {HERO_VIDEO_URL && !videoFailed ? (
           <>
             <video
               ref={videoRef}
               playsInline
               preload="metadata"
+              onError={() => setVideoFailed(true)}
               poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='%230a0a1a'/%3E%3C/svg%3E"
               className="hero-video w-full h-full object-cover bg-[#0a0a1a]"
             >
-              <source src={HERO_VIDEO_URL + "#t=0.1"} type="video/mp4" />
+              <source src={HERO_VIDEO_URL} type="video/mp4" />
             </video>
             {playing && (
               <motion.div
