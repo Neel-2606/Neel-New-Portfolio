@@ -74,20 +74,13 @@ export default function Hero() {
   const togglePlay = () => {
     const v = videoRef.current;
     if (!v) return;
-    if (v.muted) {
-      // Currently autoplaying muted — unmute to let user hear audio
+    if (v.paused || v.ended) {
+      if (v.ended) v.currentTime = 0;
       v.muted = false;
       v.volume = 1;
-      if (v.paused || v.ended) {
-        if (v.ended) v.currentTime = 0;
-        v.play().catch(() => {});
-      }
-    } else if (v.paused || v.ended) {
-      if (v.ended) v.currentTime = 0;
       v.play().catch(() => {});
     } else {
       v.pause();
-      v.muted = true;
     }
   };
 
@@ -108,9 +101,6 @@ export default function Hero() {
             <video
               ref={videoRef}
               playsInline
-              autoPlay
-              muted
-              loop
               preload="auto"
               onError={() => setVideoFailed(true)}
               className="hero-video w-full h-full object-cover bg-[#0a0a1a]"
