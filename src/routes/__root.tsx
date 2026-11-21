@@ -80,14 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Neel Prajapati — AI/ML Engineer · Hackathon Builder · SSIP Innovator" },
-      { name: "description", content: "Portfolio of Neel Prajapati — CSE student at MSU Baroda, NASA Space Apps winner, Rs. 2.43L SSIP-funded AI builder." },
+      { title: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      { name: "description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
       { name: "author", content: "Neel Prajapati" },
-      { property: "og:title", content: "Neel Prajapati — AI/ML Engineer & Hackathon Builder" },
-      { property: "og:description", content: "Building AI that creates real-world impact. Winner — NASA Space Apps. SSIP funded. From Vadodara, India." },
+      { property: "og:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      { property: "og:description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
       { property: "og:type", content: "website" },
-      { property: "og:image", content: "https://neelportfolio-teal.vercel.app/og-image.png" },
+      { property: "og:url", content: "https://neelprajapati.wiki/" },
+      { property: "og:image", content: "https://neelprajapati.wiki/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      { name: "twitter:description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
+      { name: "twitter:image", content: "https://neelprajapati.wiki/og-image.png" },
     ],
     links: [
       {
