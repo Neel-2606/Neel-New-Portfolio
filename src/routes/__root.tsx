@@ -98,6 +98,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
+      {
+        rel: "canonical",
+        href: "https://neelprajapati.wiki/",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Neel Prajapati",
+          "url": "https://neelprajapati.wiki/",
+          "description": "Computer Science student working on AI, machine learning, computer vision and software development.",
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Computer Vision",
+            "Software Development",
+          ],
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
