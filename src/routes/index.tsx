@@ -19,18 +19,35 @@ const Footer = lazy(() => import("@/components/portfolio/Footer"));
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Neel Prajapati — AI/ML Engineer · Hackathon Builder · SSIP Innovator" },
+      { title: "Neel Prajapati | AI/ML Engineer & Software Developer" },
       {
         name: "description",
         content:
-          "Portfolio of Neel Prajapati — CSE student at MSU Baroda, NASA Space Apps winner, Rs. 2.43L SSIP-funded AI builder shipping real-world impact through AI & ML.",
+          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
       },
-      { property: "og:title", content: "Neel Prajapati — AI/ML Engineer & Hackathon Builder" },
-      { property: "og:description", content: "Building AI that creates real-world impact. Winner — NASA Space Apps. SSIP funded. From Vadodara, India." },
+      { property: "og:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      {
+        property: "og:description",
+        content:
+          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://neelprajapati.wiki/" },
+      { property: "og:image", content: "https://neelprajapati.wiki/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      {
+        name: "twitter:description",
+        content:
+          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
+      },
+      { name: "twitter:image", content: "https://neelprajapati.wiki/og-image.png" },
     ],
     links: [
+      {
+        rel: "canonical",
+        href: "https://neelprajapati.wiki/",
+      },
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap",
