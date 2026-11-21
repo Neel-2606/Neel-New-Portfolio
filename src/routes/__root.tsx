@@ -123,12 +123,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "@type": "Person",
           "name": "Neel Prajapati",
           "url": "https://neelprajapati.wiki/",
-          "description": "Computer Science student working on AI, machine learning, computer vision and software development.",
+          "description":
+            "Computer Science student at The Maharaja Sayajirao University of Baroda working on artificial intelligence, machine learning, computer vision and software development.",
           "knowsAbout": [
             "Artificial Intelligence",
             "Machine Learning",
             "Computer Vision",
             "Software Development",
+          ],
+          "sameAs": [
+            "https://github.com/Neel-2606",
+            "https://www.linkedin.com/in/neel-prajapati-ai",
           ],
         }),
       },
