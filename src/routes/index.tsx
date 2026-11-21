@@ -1,47 +1,67 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { Suspense, lazy } from "react";
 import Nav from "@/components/portfolio/Nav";
 import Hero from "@/components/portfolio/Hero";
 import ScrollProgress from "@/components/portfolio/ScrollProgress";
 import BackToTop from "@/components/portfolio/BackToTop";
-
-// Lazy load below-the-fold components
-const About = lazy(() => import("@/components/portfolio/About"));
-const Skills = lazy(() => import("@/components/portfolio/Skills"));
-const Projects = lazy(() => import("@/components/portfolio/Projects"));
-const Hackathons = lazy(() => import("@/components/portfolio/Hackathons"));
-const Certifications = lazy(() => import("@/components/portfolio/Certifications"));
-const Leadership = lazy(() => import("@/components/portfolio/Leadership"));
-const Contact = lazy(() => import("@/components/portfolio/Contact"));
-const Footer = lazy(() => import("@/components/portfolio/Footer"));
+import About from "@/components/portfolio/About";
+import Skills from "@/components/portfolio/Skills";
+import Projects from "@/components/portfolio/Projects";
+import Hackathons from "@/components/portfolio/Hackathons";
+import Certifications from "@/components/portfolio/Certifications";
+import Leadership from "@/components/portfolio/Leadership";
+import Contact from "@/components/portfolio/Contact";
+import Footer from "@/components/portfolio/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      {
+        title: "Neel Prajapati | AI/ML Engineer & Software Developer",
+      },
       {
         name: "description",
         content:
-          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
+          "Explore Neel Prajapati's AI/ML projects, computer vision research, software development, internships, and award-winning hackathon work.",
       },
-      { property: "og:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      {
+        property: "og:title",
+        content: "Neel Prajapati | AI/ML Engineer & Software Developer",
+      },
       {
         property: "og:description",
         content:
-          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
+          "Explore AI projects, computer vision research, internships and hackathon achievements by Neel Prajapati.",
       },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://neelprajapati.wiki/" },
-      { property: "og:image", content: "https://neelprajapati.wiki/og-image.png" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:url",
+        content: "https://neelprajapati.wiki/",
+      },
+      {
+        property: "og:image",
+        content: "https://neelprajapati.wiki/og-image.png",
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+      {
+        name: "twitter:title",
+        content: "Neel Prajapati | AI/ML Engineer & Software Developer",
+      },
       {
         name: "twitter:description",
         content:
-          "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements.",
+          "AI/ML projects, computer vision research, software development and hackathon achievements.",
       },
-      { name: "twitter:image", content: "https://neelprajapati.wiki/og-image.png" },
+      {
+        name: "twitter:image",
+        content: "https://neelprajapati.wiki/og-image.png",
+      },
     ],
     links: [
       {
@@ -68,17 +88,15 @@ function Index() {
       <ScrollProgress />
       <Nav />
       <Hero />
-      <Suspense fallback={<div className="h-20" />}>
-        <About />
-        <Skills />
-        <Projects />
-        <Hackathons />
-        <Certifications />
-        <Leadership />
-        <Contact />
-        <Footer />
-        <BackToTop />
-      </Suspense>
+      <About />
+      <Skills />
+      <Projects />
+      <Hackathons />
+      <Certifications />
+      <Leadership />
+      <Contact />
+      <Footer />
+      <BackToTop />
       <Toaster richColors theme="dark" position="bottom-right" />
     </main>
   );

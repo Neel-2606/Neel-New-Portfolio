@@ -144,7 +144,7 @@ export default function Hero() {
             className="inline-flex items-center gap-2 chip mb-6"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            Open to opportunities · Vadodara, India
+            Open to Internship & Research Opportunities · Vadodara, India
           </motion.div>
 
           <motion.p
@@ -168,11 +168,15 @@ export default function Hero() {
             </span>
           </motion.h1>
 
+          <p className="mt-3 text-lg md:text-xl font-semibold text-white/90">
+            AI/ML Engineer &amp; Software Developer
+          </p>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-5 h-10 overflow-hidden"
+            className="mt-3 h-10 overflow-hidden"
           >
             <motion.div
               key={i}
@@ -192,10 +196,9 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
-            className="mt-6 text-base md:text-lg text-white/70 leading-relaxed max-w-xl"
+            className="mt-5 text-base md:text-lg text-white/75 leading-relaxed max-w-xl"
           >
-            CSE student at MSU Baroda · Building AI that creates real-world impact ·
-            Winner of NASA Space Apps · Rs. 2.43L SSIP Funded
+            Computer Science student at The Maharaja Sayajirao University of Baroda, building practical solutions in artificial intelligence, machine learning, computer vision, and full-stack development.
           </motion.p>
 
           <motion.div
@@ -252,7 +255,7 @@ export default function Hero() {
             <span className="w-1 h-1 bg-white/30 rounded-full" />
             <span>3 Major Awards</span>
             <span className="w-1 h-1 bg-white/30 rounded-full" />
-            <span>CGPA 8.2</span>
+            <span>CGPA 8.31</span>
           </motion.div>
         </div>
       </div>

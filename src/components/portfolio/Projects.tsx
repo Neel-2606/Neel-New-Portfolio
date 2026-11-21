@@ -37,6 +37,19 @@ const PROJECTS: Project[] = [
       "AgriForge — KrishiMitra is my most impactful project to date. It is an AI-powered agricultural platform designed to provide round-the-clock intelligent support to Indian farmers in 10+ regional languages through both voice and text interfaces. The platform integrates EfficientNet for real-time crop disease detection from images taken by farmers on their phones. The multilingual voice AI feature ensures accessibility for rural users who may not be literate or comfortable with text-based interfaces. AgriForge was awarded Rs. 2.43 Lakh in research funding under the SSIP — Student Startup and Innovation Policy by the Government of Gujarat, validating its real-world potential and social impact. This project is currently in its pilot stage and actively being developed.",
   },
   {
+    title: "CareVisi — AI Fall Detection",
+    status: "👁️ Computer Vision Project",
+    tagline: "Real-time elderly fall detection and posture monitoring using edge pose estimation",
+    stack: ["YOLOv8", "MediaPipe", "Python", "OpenCV", "FastAPI", "React"],
+    short: "Edge AI computer vision platform detecting sudden falls and posture anomalies for eldercare.",
+    color: "blue",
+    category: ["AI/ML"],
+    id: "carevisi",
+    github: "https://github.com/Neel-2606",
+    detail:
+      "CareVisi is an edge-based computer vision platform built to safeguard elderly individuals living independently. Using MediaPipe skeletal tracking and custom fine-tuned YOLOv8 pose estimation models, CareVisi detects rapid downward transitions, abnormal prolonged immobility, and posture instability in real time. Crucially, the system operates on-device without streaming or recording raw RGB camera footage, guaranteeing 100% user privacy while instantly triggering push notifications and emergency alerts to caregivers when an anomaly is verified.",
+  },
+  {
     title: "Urban Intel AI",
     status: "🏆 Hackathon Winner Project",
     tagline: "Hybrid AI smart city governance platform with local LLM policy engine",

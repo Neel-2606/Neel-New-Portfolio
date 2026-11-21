@@ -44,11 +44,11 @@ export default function About() {
             <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-indigo-500/20 blur-3xl" />
             <p className="text-white/80 text-base md:text-lg leading-relaxed relative">
               I'm <span className="text-white font-semibold">Neel Prajapati</span>, a
-              second-year Computer Science & Engineering student at{" "}
+              Computer Science & Engineering student at{" "}
               <span className="text-gradient font-semibold">
                 The Maharaja Sayajirao University of Baroda
               </span>
-              , Vadodara, with a CGPA of 8.2. I'm deeply passionate about Artificial
+              , Vadodara, with a CGPA of 8.31. I'm deeply passionate about Artificial
               Intelligence, Machine Learning, and building technology that solves real
               problems for real people.
               <br />
@@ -79,7 +79,7 @@ export default function About() {
             {[
               { n: 10, s: "+", label: "Hackathons Participated" },
               { n: 3, s: "", label: "Major Awards Won" },
-              { n: 82, s: " / 10", label: "CGPA · CSE @ MSU Baroda" },
+              { n: 83, s: " / 10", label: "CGPA · CSE @ MSU Baroda" },
             ].map((m, i) => (
               <motion.div
                 key={i}
@@ -91,7 +91,7 @@ export default function About() {
               >
                 {m.label.includes("CGPA") ? (
                   <span className="font-display text-5xl md:text-6xl font-bold text-gradient">
-                    8.2<span className="text-xl text-white/40">/10</span>
+                    8.31<span className="text-xl text-white/40">/10</span>
                   </span>
                 ) : (
                   <Counter end={m.n} suffix={m.s} />

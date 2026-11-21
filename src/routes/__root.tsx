@@ -81,16 +81,28 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Neel Prajapati | AI/ML Engineer & Software Developer" },
-      { name: "description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
+      {
+        name: "description",
+        content:
+          "Explore Neel Prajapati's AI/ML projects, computer vision research, software development, internships, and award-winning hackathon work.",
+      },
       { name: "author", content: "Neel Prajapati" },
       { property: "og:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
-      { property: "og:description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
+      {
+        property: "og:description",
+        content:
+          "Explore AI projects, computer vision research, internships and hackathon achievements by Neel Prajapati.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://neelprajapati.wiki/" },
       { property: "og:image", content: "https://neelprajapati.wiki/og-image.png" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Neel Prajapati | AI/ML Engineer & Software Developer" },
-      { name: "twitter:description", content: "Explore Neel Prajapati's portfolio featuring AI projects, computer vision research, software development, internships and hackathon achievements." },
+      {
+        name: "twitter:description",
+        content:
+          "AI/ML projects, computer vision research, software development and hackathon achievements.",
+      },
       { name: "twitter:image", content: "https://neelprajapati.wiki/og-image.png" },
     ],
     links: [
