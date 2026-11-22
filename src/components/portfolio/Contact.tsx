@@ -20,7 +20,7 @@ const INFO = [
   { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/neel-prajapati-ai", href: "https://linkedin.com/in/neel-prajapati-ai" },
   { icon: Github, label: "GitHub", value: "github.com/Neel-2606", href: "https://github.com/Neel-2606" },
   { icon: MapPin, label: "Location", value: "Vadodara, Gujarat, India" },
-  { icon: Globe, label: "Portfolio", value: "neelprajapatiportfolio.work", href: "https://neelprajapatiportfolio.work" },
+  { icon: Globe, label: "Portfolio", value: "neelprajapati.wiki", href: "https://neelprajapati.wiki" },
 ];
 
 export default function Contact() {

@@ -46,9 +46,9 @@ export default function Nav() {
       }`}
     >
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-8 h-16">
-        <button onClick={() => go("home")} className="flex items-center gap-2 group">
-          <span className="relative inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-fuchsia-500 font-display font-bold text-white shadow-[0_0_25px_rgba(168,85,247,0.6)] group-hover:scale-110 transition-transform">
-            NP
+        <button onClick={() => go("home")} className="flex items-center gap-3 group">
+          <span className="relative inline-flex items-center justify-center w-10 h-10 rounded-xl overflow-hidden border border-white/20 shadow-[0_0_25px_rgba(168,85,247,0.6)] group-hover:scale-110 transition-transform">
+            <img src="/lion.avif" alt="Neel Prajapati Logo" className="w-full h-full object-cover" />
           </span>
           <span className="hidden sm:block font-display text-sm tracking-widest text-white/70">
             NEEL · PORTFOLIO
